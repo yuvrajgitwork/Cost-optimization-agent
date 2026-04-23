@@ -3,10 +3,12 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from agent import analyze_azure_costs
+from optimization_agent import generate_optimizations, get_optimization_summary, explain_optimization
 from tools_costs import get_costs
 from tools_resources import get_resources
 from dotenv import load_dotenv
 import os
+import json
 
 load_dotenv()
 
@@ -63,3 +65,25 @@ def api_insights(q: str = "What are my top cost optimization opportunities?"):
         return {"insights": insights}
     except Exception as e:
         return {"error": str(e), "insights": "Unable to generate insights at this time."}
+
+@app.get("/api/optimizations")
+def api_optimizations(q: str = None):
+    """Get detailed optimization recommendations"""
+    try:
+        optimizations = generate_optimizations(q)
+        summary = get_optimization_summary(optimizations)
+        return {
+            "optimizations": optimizations,
+            "summary": summary
+        }
+    except Exception as e:
+        return {"error": str(e), "optimizations": [], "summary": {}}
+
+@app.get("/api/optimization-details")
+def optimization_details(title: str, description: str):
+    """Get detailed explanation for a specific optimization"""
+    try:
+        details = explain_optimization(title, description)
+        return {"details": details}
+    except Exception as e:
+        return {"error": str(e), "details": "Unable to generate details at this time."}

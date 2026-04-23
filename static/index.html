@@ -399,6 +399,216 @@
         .stat-card:nth-child(2) { animation-delay: 0.2s; }
         .stat-card:nth-child(3) { animation-delay: 0.3s; }
         .stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+        /* Optimization Cards */
+        .optimizations-section {
+            margin-bottom: 2rem;
+        }
+
+        .optimizations-header {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .optimizations-header::before {
+            content: '🔧';
+            font-size: 1.5rem;
+        }
+
+        .optimization-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .summary-card {
+            background: rgba(138, 43, 226, 0.1);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .summary-card .value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #8a2be2;
+            margin-bottom: 0.3rem;
+        }
+
+        .summary-card .label {
+            font-size: 0.85rem;
+            color: #9e9e9e;
+        }
+
+        .optimizations-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .optimization-card {
+            background: rgba(138, 43, 226, 0.08);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .optimization-card:hover {
+            border-color: rgba(138, 43, 226, 0.6);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .optimization-card-header {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .optimization-card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #8a2be2;
+            flex: 1;
+        }
+
+        .optimization-card-priority {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .optimization-card-priority.critical {
+            background: rgba(255, 59, 48, 0.2);
+            color: #ff3b30;
+        }
+
+        .optimization-card-priority.high {
+            background: rgba(255, 152, 0, 0.2);
+            color: #ff9800;
+        }
+
+        .optimization-card-priority.medium {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+        }
+
+        .optimization-card-priority.low {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+        }
+
+        .optimization-card-summary {
+            padding: 0 1.5rem 1rem;
+            border-top: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .optimization-card-description {
+            font-size: 0.9rem;
+            color: #c0c0c0;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .optimization-card-savings {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .optimization-card-savings-label {
+            font-size: 0.85rem;
+            color: #9e9e9e;
+        }
+
+        .optimization-card-savings-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #4caf50;
+        }
+
+        .optimization-card-effort {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #9e9e9e;
+            margin-bottom: 1rem;
+        }
+
+        .optimization-card-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem;
+            background: rgba(138, 43, 226, 0.15);
+            color: #8a2be2;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .optimization-card-toggle:hover {
+            background: rgba(138, 43, 226, 0.25);
+        }
+
+        .optimization-card-expanded {
+            display: none;
+            padding: 1.5rem;
+            border-top: 1px solid rgba(138, 43, 226, 0.2);
+            background: rgba(138, 43, 226, 0.05);
+        }
+
+        .optimization-card-expanded.show {
+            display: block;
+        }
+
+        .optimization-card-expanded h4 {
+            color: #8a2be2;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .optimization-card-expanded p {
+            color: #c0c0c0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .optimization-card-expanded ol,
+        .optimization-card-expanded ul {
+            margin-left: 1.5rem;
+            color: #c0c0c0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .optimization-card-expanded li {
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -467,6 +677,32 @@
             </div>
         </div>
 
+        <!-- FinOps Optimization Analyzer -->
+        <div class="optimizations-section">
+            <div class="optimizations-header">FinOps Optimization Engine</div>
+            <div class="optimization-summary" id="optimizationSummary">
+                <div class="summary-card">
+                    <div class="value">-</div>
+                    <div class="label">Potential Monthly Savings</div>
+                </div>
+                <div class="summary-card">
+                    <div class="value">0</div>
+                    <div class="label">Critical Issues</div>
+                </div>
+                <div class="summary-card">
+                    <div class="value">0</div>
+                    <div class="label">High Priority</div>
+                </div>
+                <div class="summary-card">
+                    <div class="value">0</div>
+                    <div class="label">Total Recommendations</div>
+                </div>
+            </div>
+            <div class="optimizations-container" id="optimizationsContainer">
+                <div class="loading">Analyzing Azure environment for optimization opportunities...</div>
+            </div>
+        </div>
+
         <!-- Resources Section -->
         <div class="resources-section">
             <div class="resources-header">Resource Inventory</div>
@@ -500,10 +736,12 @@
                 const costsResponse = await axios.get(`${API_BASE}/api/costs`);
                 const resourcesResponse = await axios.get(`${API_BASE}/api/resources`);
                 const insightsResponse = await axios.get(`${API_BASE}/api/insights`);
+                const optimizationsResponse = await axios.get(`${API_BASE}/api/optimizations`);
 
                 displayStats(costsResponse.data, resourcesResponse.data);
                 displayCharts(costsResponse.data);
                 displayInsights(insightsResponse.data);
+                displayOptimizations(optimizationsResponse.data);
                 displayResources(resourcesResponse.data);
 
             } catch (error) {
@@ -743,6 +981,109 @@
 
             } catch (e) {
                 console.warn('Could not display resources', e);
+            }
+        }
+
+        function displayOptimizations(data) {
+            try {
+                const optimizations = data.optimizations || [];
+                const summary = data.summary || {};
+
+                // Update summary cards
+                const summaryHtml = `
+                    <div class="summary-card">
+                        <div class="value">$${summary.total_savings_monthly || 0}</div>
+                        <div class="label">Potential Monthly Savings</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="value">${summary.critical_issues || 0}</div>
+                        <div class="label">Critical Issues</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="value">${summary.high_priority_issues || 0}</div>
+                        <div class="label">High Priority</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="value">${summary.total_recommendations || 0}</div>
+                        <div class="label">Total Recommendations</div>
+                    </div>
+                `;
+                document.getElementById('optimizationSummary').innerHTML = summaryHtml;
+
+                // Display optimization cards
+                const container = document.getElementById('optimizationsContainer');
+                
+                if (!optimizations || optimizations.length === 0) {
+                    container.innerHTML = '<div class="insight-card"><div class="insight-text">No optimizations found or analyzing...</div></div>';
+                    return;
+                }
+
+                container.innerHTML = optimizations.map((opt, idx) => {
+                    const priorityClass = (opt.priority || 'medium').toLowerCase();
+                    const steps = opt.steps || [];
+                    
+                    return `
+                        <div class="optimization-card">
+                            <div class="optimization-card-header">
+                                <div class="optimization-card-title">${opt.title || 'Optimization'}</div>
+                                <div class="optimization-card-priority ${priorityClass}">
+                                    ${(opt.priority || 'MEDIUM').toUpperCase()}
+                                </div>
+                            </div>
+                            <div class="optimization-card-summary">
+                                <div class="optimization-card-description">
+                                    ${opt.description || opt.impact || 'No description'}
+                                </div>
+                                <div class="optimization-card-savings">
+                                    <span class="optimization-card-savings-label">Estimated Savings</span>
+                                    <span class="optimization-card-savings-value">$${opt.savings || 0}/month</span>
+                                </div>
+                                <div class="optimization-card-effort">
+                                    <span>Effort: <strong>${opt.effort || 'MEDIUM'}</strong></span>
+                                    <span>Category: <strong>${opt.category || 'GENERAL'}</strong></span>
+                                </div>
+                                <button class="optimization-card-toggle" onclick="toggleOptimization(${idx})">
+                                    📋 View Details
+                                    <span id="toggle-arrow-${idx}">▼</span>
+                                </button>
+                            </div>
+                            <div class="optimization-card-expanded" id="expanded-${idx}">
+                                <h4>Recommendation</h4>
+                                <p>${opt.recommendation || opt.impact || 'See details above'}</p>
+                                
+                                <h4>Implementation Steps</h4>
+                                <ol>
+                                    ${(steps.length > 0 ? steps : ['Step 1: Review findings', 'Step 2: Plan implementation', 'Step 3: Execute changes']).map(step => `<li>${step}</li>`).join('')}
+                                </ol>
+                                
+                                ${opt.affectedResources && opt.affectedResources.length > 0 ? `
+                                    <h4>Affected Resources</h4>
+                                    <ul>
+                                        ${opt.affectedResources.slice(0, 5).map(res => `<li>${res}</li>`).join('')}
+                                    </ul>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+            } catch (e) {
+                console.warn('Could not display optimizations', e);
+                document.getElementById('optimizationsContainer').innerHTML = 
+                    '<div class="insight-card"><div class="insight-text">Unable to load optimizations. Please try again.</div></div>';
+            }
+        }
+
+        function toggleOptimization(index) {
+            const expanded = document.getElementById(`expanded-${index}`);
+            const arrow = document.getElementById(`toggle-arrow-${index}`);
+            
+            if (expanded.classList.contains('show')) {
+                expanded.classList.remove('show');
+                arrow.textContent = '▼';
+            } else {
+                expanded.classList.add('show');
+                arrow.textContent = '▲';
             }
         }
 

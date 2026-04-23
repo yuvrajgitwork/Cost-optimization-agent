@@ -1,17 +1,16 @@
 from dotenv import load_dotenv
 load_dotenv()
-from openai import AzureOpenAI
+from openai import OpenAI
 import os
 from tools_costs import get_costs
 from tools_resources import get_resources
 
-client = AzureOpenAI(
-    api_key=os.getenv("AZURE_OPENAI_API_KEY"),
-    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
-    api_version="2024-02-15-preview"
+client = OpenAI(
+    api_key=os.getenv("GITHUB_PAT"),
+    base_url=os.getenv("GITHUB_MODEL_ENDPOINT")
 )
 
-DEPLOYMENT = os.getenv("AZURE_OPENAI_DEPLOYMENT")
+MODEL = os.getenv("GITHUB_MODEL", "gpt-4o-mini")
 
 def analyze_azure_costs(question: str):
     costs = get_costs()
@@ -33,7 +32,7 @@ Give actionable cost optimization insights.
 """
 
     response = client.chat.completions.create(
-        model=DEPLOYMENT,
+        model=MODEL,
         messages=[
             {"role": "system", "content": "You are an expert Azure FinOps engineer."},
             {"role": "user", "content": prompt}
